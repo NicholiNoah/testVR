@@ -1,0 +1,96 @@
+{
+	"metadata": {
+		"type": "App"
+	},
+	"project": {
+		"shadows": true,
+		"shadowType": 1,
+		"vr": true,
+		"toneMapping": 0,
+		"toneMappingExposure": 1
+	},
+	"camera": {
+		"metadata": {
+			"version": 4.6,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"object": {
+			"uuid": "078b41a7-4d7d-4832-907b-79210896d587",
+			"type": "PerspectiveCamera",
+			"name": "Camera",
+			"layers": 1,
+			"matrix": [0.9956766161874199,1.7347235125746888e-18,0.09288766426202467,0,0.019435600075191756,0.9778648299128474,-0.20833307275173252,0,-0.09083157674583726,0.2092376888820669,0.9736371098981048,0,-0.15994396396060534,0.36844351456540575,1.7144630138041426,1],
+			"up": [0,1,0],
+			"fov": 100.37507073745894,
+			"zoom": 1,
+			"near": 0.01,
+			"far": 1000,
+			"focus": 10,
+			"aspect": 0.43993231810490696,
+			"filmGauge": 35,
+			"filmOffset": 0
+		}
+	},
+	"scene": {
+		"metadata": {
+			"version": 4.6,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"geometries": [
+			{
+				"uuid": "e0d94186-4297-4962-985e-48ab07829bce",
+				"type": "TorusKnotGeometry",
+				"radius": 0.08,
+				"tube": 0.04,
+				"tubularSegments": 64,
+				"radialSegments": 8,
+				"p": 2,
+				"q": 3
+			}],
+		"materials": [
+			{
+				"uuid": "dc4a9712-e202-4036-aa22-81371544fd0e",
+				"type": "MeshNormalMaterial",
+				"depthFunc": 3,
+				"depthTest": true,
+				"depthWrite": true,
+				"colorWrite": true,
+				"stencilWrite": false,
+				"stencilWriteMask": 255,
+				"stencilFunc": 519,
+				"stencilRef": 0,
+				"stencilFuncMask": 255,
+				"stencilFail": 7680,
+				"stencilZFail": 7680,
+				"stencilZPass": 7680
+			}],
+		"object": {
+			"uuid": "3741222A-BD8F-401C-A5D2-5A907E891896",
+			"type": "Scene",
+			"name": "Scene",
+			"layers": 1,
+			"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+			"up": [0,1,0],
+			"children": [
+				{
+					"uuid": "9fba65d9-d6c5-4e17-8d4b-a52a52b8d16f",
+					"type": "Mesh",
+					"name": "TorusKnot",
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-0.38,1.7,-0.4,1],
+					"up": [0,1,0],
+					"geometry": "e0d94186-4297-4962-985e-48ab07829bce",
+					"material": "dc4a9712-e202-4036-aa22-81371544fd0e"
+				}]
+		}
+	},
+	"scripts": {
+		"9fba65d9-d6c5-4e17-8d4b-a52a52b8d16f": [
+			{
+				"name": "grab",
+				"source": "\tconst controller1 = player.getVRController(0);\n    const controller2 = player.getVRController(1);\n\n    // Set up event listeners for controller input\n    controller1.addEventListener(\"squeezestart\", onControllerSqueezeStart);\n    controller2.addEventListener(\"squeezestart\", onControllerSqueezeStart);\n\n// Handle Controller Squeeze Event\nfunction onControllerSqueezeStart(event) {\n    const controller = event.target;\n\n    // Check which controller is squeezing\n    if (controller === player.getVRController(0)) {\n        // Modify an object when the first controller squeezes\n        this.scale.set(1.2, 1.2, 1.2); // Scale the object up\n    } else if (controller === player.getVRController(1)) {\n        // Modify a different object when the second controller squeezes\n        // ...\n    }\n}\n\n// Update the Scene with Controller Position and Orientation\nfunction update(event) {\n    const controller1 = player.getVRController(0);\n    const controller2 = player.getVRController(1);\n\n    // Move an object based on controller position\n    this.position.copy(controller1.position);\n}"
+			}]
+	}
+}
